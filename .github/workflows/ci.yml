@@ -1,31 +1,26 @@
-name: CI Playwright
+name: Playwright Tests with Docker
 
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+on: [push, pull_request]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.40.0-jammy
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npx playwright test
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          node-version: 20
-
-      - run: npm ci
-      - run: npx playwright install
-
-      - run: npx playwright test
-
-      - name: Install Newman
-        run: npm install -g newman
-      - name: Run Postman collection
-        run: newman run ./postman/Test\ PM\ -\ PW\ et\ docker.postman_collection.json
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report
-          path: playwright-report
+          name: test-results
+          path: test-results/
