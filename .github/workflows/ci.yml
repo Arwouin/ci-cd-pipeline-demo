@@ -26,4 +26,4 @@ jobs:
         run: npx playwright test
 
       - name: Run Postman tests
-        run: npx newman run "./postman/postman.json"
+        run: npx newman run "./postman/postman.json" -e "./postman/linkUser.postman_environment.json"
