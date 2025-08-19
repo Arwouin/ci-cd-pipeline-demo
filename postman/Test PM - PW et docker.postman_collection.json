@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "4efb1744-d4fb-4d20-8d3c-b1c118ecf2e1",
+		"name": "Test PM / PW et docker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45082798",
+		"_collection_link": "https://baptiste-3484544.postman.co/workspace/Baptiste's-Workspace~e122df56-6730-4b54-8d9f-2a35321f0506/collection/45082798-4efb1744-d4fb-4d20-8d3c-b1c118ecf2e1?action=share&source=collection_link&creator=45082798"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Vérification du code 200\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Vérification du contenu json\", () => {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\")\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{linkUser}}/1",
+					"host": [
+						"{{linkUser}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

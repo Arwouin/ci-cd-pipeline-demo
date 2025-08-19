@@ -1,0 +1,20 @@
+{
+  "name": "hello-devops",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "report": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "install": "^0.13.0"
+  },
+  "dependencies": {
+    "playwright": "^1.54.2"
+  }
+}
