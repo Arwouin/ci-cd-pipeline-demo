@@ -1,7 +1,15 @@
-FROM mcr.microsoft.com/playwright:v1.37.0-focal
+FROM node:20
+
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+
+RUN npm ci
+
 COPY . .
+
+RUN npx playwright install --with-deps
+
 CMD ["npx", "playwright", "test"]
+
+
 
