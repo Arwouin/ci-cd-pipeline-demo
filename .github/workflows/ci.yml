@@ -24,3 +24,6 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
+
+      - name: Run Postman tests
+        run: npx newman run "./postman/postman.json"
