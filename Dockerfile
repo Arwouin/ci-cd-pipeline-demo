@@ -9,6 +9,8 @@ COPY . .
 
 RUN npx playwright install --with-deps
 
+RUN ls -R
+
 CMD ["npx", "playwright", "test"]
 
 
