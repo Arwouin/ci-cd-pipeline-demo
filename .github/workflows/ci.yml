@@ -34,4 +34,4 @@ jobs:
           name: all-reports
           path: |
             playwright-report/
-            postman-report.html
+            **/postman-report.html
