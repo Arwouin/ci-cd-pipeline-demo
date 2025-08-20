@@ -5,6 +5,8 @@ COPY package*.json ./
 
 RUN npm ci
 
+RUN npm install -g newman
+
 COPY . .
 
 RUN npx playwright install --with-deps
@@ -12,6 +14,3 @@ RUN npx playwright install --with-deps
 RUN ls -R
 
 CMD ["npx", "playwright", "test"]
-
-
-
