@@ -32,6 +32,17 @@ jobs:
           --reporter-html-export postman-report.html \
           --suppress-exit-code
 
+      - name: DEBUG report Postman
+        run: |
+          echo "Tous les fichiers"
+          find . -name "*.html" -o -name "*report*" | head -20
+          echo ""
+          echo "Contenu"
+          ls -la postman/
+          echo ""
+          echo "Creation manuelle"
+          echo "<h1>Test rapport</h1>" > test-manuel.html
+
       - name: Upload all reports
         uses: actions/upload-artifact@v4
         with:
