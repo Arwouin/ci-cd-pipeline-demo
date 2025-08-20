@@ -22,18 +22,21 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Create reports folder
-        run: mkdir -p reports
-
       - name: Run Playwright tests
         run: npx playwright test --reporter=html
 
+      - name: Install Newman HTML reporter
+        run: npm install newman-reporter-html
+
       - name: Run Postman tests
         run: |
+          mkdir -p reports
           npx newman run "./postman/postman.json" -e "./postman/linkUser.json" \
           --reporters cli,html \
           --reporter-html-export reports/postman-report.html \
           --suppress-exit-code
+          echo "Contenu de reports:"
+          ls -la reports
 
       - name: Upload all reports
         uses: actions/upload-artifact@v4
