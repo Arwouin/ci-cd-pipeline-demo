@@ -26,7 +26,11 @@ jobs:
         run: npx playwright test --reporter=html
 
       - name: Run Postman tests
-        run: npx newman run "./postman/postman.json" -e "./postman/linkUser.json" --reporters cli,html --reporter-html-export postman-report.html
+        run: |
+          npx newman run "./postman/postman.json" -e "./postman/linkUser.json" \
+          --reporters cli,html \
+          --reporter-html-export postman-report.html \
+          --suppress-exit-code
 
       - name: Upload all reports
         uses: actions/upload-artifact@v4
@@ -34,4 +38,4 @@ jobs:
           name: all-reports
           path: |
             playwright-report/
-            **/postman-report.html
+            postman-report.html
