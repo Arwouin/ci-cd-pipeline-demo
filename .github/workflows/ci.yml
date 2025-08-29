@@ -19,6 +19,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build Docker Image
+        run: docker build -t playwright-tests .
+
+      - name: Run tests in Docker
+        run: docker run --rm playwright-tests
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
